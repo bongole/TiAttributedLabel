@@ -20,7 +20,30 @@ function walk( d, r, pos ){
             var o = {};
             o[n.nodeName] = attro;
             
-            r.push([pos, subtxt.length, o]);
+            var subtxt_len = subtxt.length;
+            
+            r.forEach(function(rc){
+                // inherit attributes.
+                // ex. <font fontSize="30dp">aaa<font color="red">bbb</font></font>
+                // "bbb" should 30dp size and red color font.
+                var start = rc[0];
+                var end = rc[0] + rc[1];
+                if( pos <= start && end <= (pos + subtxt_len) ){
+                    var oc = rc[2];
+                    for( var node_name in oc ){
+                        if( n.nodeName == node_name ){
+                            var attroc = oc[node_name];
+                            for( var prop in attro ){
+                                if( !attroc.hasOwnProperty(prop) ){
+                                    attroc[prop] = attro[prop];
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+            
+            r.push([pos, subtxt_len, o]);
             
             txt += subtxt;
             pos += subtxt.length;
