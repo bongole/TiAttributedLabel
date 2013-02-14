@@ -41,9 +41,6 @@ exports.createALabel = function(opt){
           var result = [];
           var t = walk( doc, result, 0);
           
-          Ti.API.info(t);
-          Ti.API.info(JSON.stringify(result));
-          
           l.attributedText = {
               text: t,
               attributes: result.reverse()
