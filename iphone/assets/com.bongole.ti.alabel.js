@@ -5,7 +5,7 @@ function walk( d, r, pos ){
         var n = nodes.item(i);
         if( n.nodeType === n.TEXT_NODE ){
             txt += n.nodeValue;
-            pos += txt.length;
+            pos += n.nodeValue.length;
         }
         else{
             var subtxt = walk( n, r, pos );
