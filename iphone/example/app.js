@@ -8,32 +8,18 @@
 var win = Ti.UI.createWindow({
 	backgroundColor:'white'
 });
-var label = Ti.UI.createLabel();
-win.add(label);
+
+var TiAttributedLabelModule = require('com.bongole.ti.alabel');
+l = TiAttributedLabelModule.createALabel({
+    width: '200dp'
+})
+
+var html_text = "a"
++ '<font fontFamily="TestFont" fontSize="30dp" fontWeight="bonld" color="red">b</font>'
++ '<a href="http://www.example.com">c</a>'
++ '<font fontSize="30dp"><a href="http://www.example.com">d</a></font>'
++ 'e';
+
+l.setHTMLText(html_text);
+
 win.open();
-
-// TODO: write your module tests here
-var TiAttributedLabel = require('com.bongole.ti.alabel');
-Ti.API.info("module is => " + TiAttributedLabel);
-
-label.text = TiAttributedLabel.example();
-
-Ti.API.info("module exampleProp is => " + TiAttributedLabel.exampleProp);
-TiAttributedLabel.exampleProp = "This is a test value";
-
-if (Ti.Platform.name == "android") {
-	var proxy = TiAttributedLabel.createExample({
-		message: "Creating an example Proxy",
-		backgroundColor: "red",
-		width: 100,
-		height: 100,
-		top: 100,
-		left: 150
-	});
-
-	proxy.printMessage("Hello world!");
-	proxy.message = "Hi world!.  It's me again.";
-	proxy.printMessage("Hello world!");
-	win.add(proxy);
-}
-
