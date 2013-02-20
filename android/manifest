@@ -1,0 +1,19 @@
+#
+# this is your module manifest and used by Titanium
+# during compilation, packaging, distribution, etc.
+#
+version: 0.1
+apiversion: 2
+description: My module
+author: Your Name
+license: Specify your license
+copyright: Copyright (c) 2013 by Your Company
+
+
+# these should not be edited
+name: android
+moduleid: com.bongole.ti.alabel
+guid: 10f44e1c-a6cd-4d64-847b-a6d68bbd2add
+platform: android
+minsdk: 3.0.0.GA
+commonjs: true
