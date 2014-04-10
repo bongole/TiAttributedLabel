@@ -100,6 +100,11 @@ static NSDictionary *labelOptionDispatcher =nil;
                 if (url) {
                     [mas setLink:[NSURL URLWithString:url] range:r];
                 }
+            },
+            @"u": ^(NSMutableAttributedString *mas, id arg, NSRange r){
+                [mas addAttribute:NSUnderlineStyleAttributeName
+                            value:[NSNumber numberWithInteger:NSUnderlineStyleSingle]
+                            range:r];
             }
          } retain];
     }
